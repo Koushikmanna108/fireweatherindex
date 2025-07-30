@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .login {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 24px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00c9a7;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00b393;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        ::placeholder {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>FWI Prediction</h1>
+        <form action="{{url_for('predict')}}" method="post">
+            <input type="text" name="Temperature" placeholder="Temperature" required />
+            <input type="text" name="RH" placeholder="Relative Humidity (RH)" required />
+            <input type="text" name="Ws" placeholder="Wind Speed (Ws)" required />
+            <input type="text" name="Rain" placeholder="Rainfall (Rain)" required />
+            <input type="text" name="FFMC" placeholder="Fine Fuel Moisture Code (FFMC)" required />
+            <input type="text" name="DMC" placeholder="Duff Moisture Code (DMC)" required />
+            <input type="text" name="ISI" placeholder="Initial Spread Index (ISI)" required />
+            <input type="text" name="Classes" placeholder="Fire Class (Classes)" required />
+            <input type="text" name="Region" placeholder="Region" required />
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <h2>{{results}}</h2>
+    </div>
+</body>
+</html>
